@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -205,6 +205,26 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [lang, setLang] = useState<"ar" | "en">("ar");
   const isEnglish = lang === "en";
+  useEffect(() => {
+    const targets = document.querySelectorAll<HTMLElement>(".scroll-reveal");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      targets.forEach((element) => element.classList.add("is-visible"));
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -45px 0px" });
+    targets.forEach((element, index) => {
+      element.style.setProperty("--scroll-delay", `${Math.min(index * 45, 240)}ms`);
+      observer.observe(element);
+    });
+    return () => observer.disconnect();
+  }, [lang]);
   const activeNavItems = isEnglish
     ? [{ label: "About", href: "#about" }, { label: "Projects", href: "#projects" }, { label: "Experience", href: "#experience" }, { label: "Skills", href: "#skills" }]
     : navItems;
@@ -268,7 +288,7 @@ export default function App() {
           <div className="marquee-track"><span>AI EDUCATION</span><b>✦</b><span>ROBOTICS</span><b>✦</b><span>DIGITAL FABRICATION</span><b>✦</b><span>CREATIVE TECHNOLOGY</span><b>✦</b><span>AI EDUCATION</span><b>✦</b><span>ROBOTICS</span><b>✦</b></div>
         </section>
 
-        <section className="section about-section" id="about">
+        <section className="section about-section scroll-reveal" id="about">
           <div className="container about-grid">
             <SectionHeading eyebrow={tx("01 · عن هبة", "01 · About Heba")} title={<>{isEnglish ? <>Technology is not the goal.<br /><span>It is an opportunity to change.</span></> : <>التقنية ليست هدفاً.<br /><span>بل فرصة للتغيير.</span></>}</>} intro={tx("تعمل هبة عند النقطة التي تلتقي فيها الأدوات الرقمية مع الفضول الإنساني. تصمم مساحات تعلم تمنح المتعلم الثقة كي يجرّب، ويخطئ، ويبني شيئاً يخصه.", "Heba works where digital tools meet human curiosity. She designs learning spaces that give people the confidence to experiment, fail safely, and build something of their own.")} />
             <div className="about-story reveal" style={{ animationDelay: "100ms" }}>
@@ -283,7 +303,7 @@ export default function App() {
           </div>
         </section>
 
-        <section className="section projects-section" id="projects">
+        <section className="section projects-section scroll-reveal" id="projects">
           <div className="container">
             <SectionHeading eyebrow={tx("02 · مشاريع مختارة", "02 · Selected projects")} title={<>{isEnglish ? <>Impact begins with<br /><span>the learning experience.</span></> : <>أثرٌ يبدأ من<br /><span>تجربة التعلم.</span></>}</>} intro={tx("ثلاثة مسارات تختصر طريقة العمل: فهم الاحتياج، بناء تجربة عملية، ثم قياس التقدم بلغة يفهمها المتعلم وسوق العمل.", "Three paths capture the method: understand the need, build a practical experience, then measure progress in language learners and employers value.")} />
             <div className="projects-grid">
@@ -301,7 +321,7 @@ export default function App() {
           </div>
         </section>
 
-        <section className="section impact-section">
+        <section className="section impact-section scroll-reveal">
           <div className="container impact-grid">
             <div className="impact-intro reveal"><p className="eyebrow"><span className="eyebrow-dot" />{tx("الأرقام التي تحكي القصة", "The numbers behind the story")}</p><h2>{isEnglish ? <>Learning becomes stronger<br /><span>when it becomes tangible.</span></> : <>التعلم يصبح أقوى<br /><span>عندما يصبح ملموساً.</span></>}</h2><a className="text-link" href="#contact">{tx("ابدأ محادثة", "Start a conversation")} <ArrowLeft size={16} /></a></div>
             <div className="impact-stats">
@@ -312,7 +332,7 @@ export default function App() {
           </div>
         </section>
 
-        <section className="section skills-section" id="skills">
+        <section className="section skills-section scroll-reveal" id="skills">
           <div className="container skills-grid">
             <SectionHeading eyebrow={tx("03 · المهارات والخبرة", "03 · Skills & expertise")} title={<>{isEnglish ? <>A multi-dimensional<br /><span>toolkit.</span></> : <>صندوق أدوات<br /><span>متعدد الأبعاد.</span></>}</>} intro={tx("مزيج عملي من التفكير التقني، التواصل التعليمي، وصناعة المحتوى. لأن أفضل البرامج لا تحتاج أداة واحدة، بل منظومة متكاملة.", "A practical blend of technical thinking, educational communication, and content creation. The best programs need an ecosystem, not a single tool.")} />
             <div className="skills-cloud reveal" style={{ animationDelay: "100ms" }}>{activeSkills.map((skill) => { const Icon = skill.icon; return <div className={`skill-chip ${skill.tone}`} key={skill.label}><Icon size={18} aria-hidden="true" /><span>{skill.label}</span></div>; })}</div>
@@ -324,18 +344,18 @@ export default function App() {
           </div>
         </section>
 
-        <section className="section experience-section" id="experience">
+        <section className="section experience-section scroll-reveal" id="experience">
           <div className="container experience-grid">
             <div className="experience-sticky"><SectionHeading eyebrow={tx("04 · المسار المهني", "04 · Career path")} title={<>{isEnglish ? <>Experience that moves<br /><span>with the future.</span></> : <>خبرة تتحرك<br /><span>مع المستقبل.</span></>}</>} intro={tx("مسار مهني متدرج من تعليم الحاسوب إلى قيادة تجارب التعلم الرقمي والتصنيع الإبداعي.", "A career that grew from computer education into leading digital learning and creative fabrication experiences.")} /><div className="credential-card"><div className="credential-icon"><GraduationCap size={22} /></div><div><strong>{tx("بكالوريوس علوم الحاسوب", "Bachelor’s degree in Computer Science")}</strong><span>{tx("تفاصيل الجامعة وسنة التخرج تحتاج إلى استكمال", "University name and graduation year to be confirmed")}</span></div></div></div>
             <div className="timeline" aria-label={tx("الخبرة المهنية", "Professional experience")}>{activeTimeline.map((item, index) => <article className={`timeline-item reveal ${item.current ? "is-current" : ""}`} style={{ animationDelay: `${index * 70}ms` }} key={item.role}><div className="timeline-marker"><span /></div><div className="timeline-content"><img className="timeline-image" src={item.image} alt={item.imageAlt} loading="lazy" /><div className="timeline-meta"><span>{item.period}</span>{item.current && <b>{tx("الدور الحالي", "Current role")}</b>}</div><h3>{item.role}</h3><p className="timeline-place">{item.place}</p><p>{item.detail}</p></div></article>)}</div>
           </div>
         </section>
 
-        <section className="section principles-section">
-          <div className="container principles-grid"><div className="principles-title"><p className="eyebrow"><span className="eyebrow-dot" />{tx("كيف تعمل", "How I work")}</p><h2>{isEnglish ? <>Three principles.<br /><span>One shared impact.</span></> : <>ثلاثة مبادئ.<br /><span>أثرٌ واحد.</span></>}</h2></div><div className="principle-card"><div className="principle-icon icon-clarity"><Sparkles size={23} strokeWidth={1.5} aria-hidden="true" /></div><span>01</span><h3>{tx("وضوح قبل التعقيد", "Clarity before complexity")}</h3><p>{tx("أحوّل المفاهيم التقنية إلى خطوات قابلة للفهم والتطبيق، دون أن أفقد عمقها.", "I turn technical concepts into steps people can understand and apply without losing their depth.")}</p></div><div className="principle-card"><div className="principle-icon icon-experience"><Wrench size={23} strokeWidth={1.5} aria-hidden="true" /></div><span>02</span><h3>{tx("التجربة قبل المحاضرة", "Experience before lecture")}</h3><p>{tx("يتعلم المشاركون من خلال البناء والتجريب والمشاركة، لا من خلال التلقي وحده.", "Participants learn through building, testing, and sharing—not through passive reception alone.")}</p></div><div className="principle-card"><div className="principle-icon icon-impact"><CircleCheck size={23} strokeWidth={1.5} aria-hidden="true" /></div><span>03</span><h3>{tx("الأثر قابل للقياس", "Impact can be measured")}</h3><p>{tx("أربط كل برنامج بمخرجات واضحة تساعد المتعلم على رؤية تقدمه والاستفادة منه.", "I connect every program to clear outcomes that help learners see and use their progress.")}</p></div></div>
+        <section className="section principles-section scroll-reveal">
+          <div className="container principles-grid"><div className="principles-title"><p className="eyebrow"><span className="eyebrow-dot" />{tx("كيف تعمل", "How I work")}</p><h2>{isEnglish ? <>Three principles.<br /><span>One shared impact.</span></> : <>ثلاثة مبادئ.<br /><span>أثرٌ واحد.</span></>}</h2></div><div className="principle-card scroll-reveal"><div className="principle-icon icon-clarity"><Sparkles size={23} strokeWidth={1.5} aria-hidden="true" /></div><span>01</span><h3>{tx("وضوح قبل التعقيد", "Clarity before complexity")}</h3><p>{tx("أحوّل المفاهيم التقنية إلى خطوات قابلة للفهم والتطبيق، دون أن أفقد عمقها.", "I turn technical concepts into steps people can understand and apply without losing their depth.")}</p></div><div className="principle-card scroll-reveal"><div className="principle-icon icon-experience"><Wrench size={23} strokeWidth={1.5} aria-hidden="true" /></div><span>02</span><h3>{tx("التجربة قبل المحاضرة", "Experience before lecture")}</h3><p>{tx("يتعلم المشاركون من خلال البناء والتجريب والمشاركة، لا من خلال التلقي وحده.", "Participants learn through building, testing, and sharing—not through passive reception alone.")}</p></div><div className="principle-card scroll-reveal"><div className="principle-icon icon-impact"><CircleCheck size={23} strokeWidth={1.5} aria-hidden="true" /></div><span>03</span><h3>{tx("الأثر قابل للقياس", "Impact can be measured")}</h3><p>{tx("أربط كل برنامج بمخرجات واضحة تساعد المتعلم على رؤية تقدمه والاستفادة منه.", "I connect every program to clear outcomes that help learners see and use their progress.")}</p></div></div>
         </section>
 
-        <section className="section contact-section" id="contact">
+        <section className="section contact-section scroll-reveal" id="contact">
           <div className="container contact-card"><div className="contact-orb" /><div className="contact-copy reveal"><p className="eyebrow"><span className="eyebrow-dot" />{tx("05 · لنتحدث", "05 · Let’s talk")}</p><h2>{isEnglish ? <>Have an educational idea<br /><em>worth building?</em></> : <>هل لديك فكرة تعليمية<br /><em>تستحق أن تُبنى؟</em></>}</h2><p>{tx("إذا كنت تبحث عن مدربة تجمع بين المهارة التقنية والطاقة الإنسانية، يسعدني أن أسمع عن مشروعك.", "If you are looking for a trainer who combines technical skill with human energy, I would love to hear about your project.")}</p><div className="contact-actions"><a className="button button-light" href="mailto:Hebahtarawneh@gmail.com">{tx("أرسل بريداً", "Send an email")} <Mail size={17} /></a><a className="contact-direct" href="tel:+962797376526"><Phone size={16} /> 079 737 6526</a></div></div><div className="contact-side reveal" style={{ animationDelay: "100ms" }}><div className="contact-detail"><MapPin size={18} /><span>{isEnglish ? <>Al-Mazar Al-Janoubi<br />Karak, Jordan</> : <>المزار الجنوبي<br />الكرك، الأردن</>}</span></div><div className="contact-detail"><Clock3 size={18} /><span>{isEnglish ? <>Open to collaboration<br />and training opportunities</> : <>متاحة للتعاون<br />والفرص التدريبية</>}</span></div><div className="contact-signature">H / <span>make it meaningful</span></div></div></div>
         </section>
       </main>
