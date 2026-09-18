@@ -124,7 +124,7 @@ h1, h2, h3, p { margin-top: 0; }
 .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 90px; align-items: start; }
 .about-story { padding-top: 24px; }
 .about-portrait-wrap { position: relative; width: min(100%, 330px); margin-bottom: 28px; }
-.about-portrait { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 30%; border-radius: 18px 18px 18px 4px; filter: saturate(.88) contrast(1.02); box-shadow: 16px 16px 0 rgba(200,243,74,.35); }
+.about-portrait { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: center 42%; border-radius: 18px 18px 18px 4px; filter: saturate(.92) contrast(1.02); box-shadow: 16px 16px 0 rgba(200,243,74,.35); }
 .portrait-stamp { position: absolute; left: -15px; bottom: 18px; display: grid; gap: 2px; padding: 9px 11px; background: var(--ink); color: var(--lime); border-radius: 6px; transform: rotate(-5deg); box-shadow: 0 9px 18px rgba(32,36,43,.16); }
 .portrait-stamp span { font: 11px "IBM Plex Mono", monospace; letter-spacing: .12em; }.portrait-stamp small { color: rgba(255,255,255,.7); font: 8px "IBM Plex Mono", monospace; direction: ltr; }
 .about-story > p { max-width: 590px; color: #555b63; font-size: 22px; line-height: 1.9; letter-spacing: -.03em; }

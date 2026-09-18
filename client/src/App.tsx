@@ -269,7 +269,7 @@ export default function App() {
             <SectionHeading eyebrow={tx("01 · عن هبة", "01 · About Heba")} title={<>{isEnglish ? <>Technology is not the goal.<br /><span>It is an opportunity to change.</span></> : <>التقنية ليست هدفاً.<br /><span>بل فرصة للتغيير.</span></>}</>} intro={tx("تعمل هبة عند النقطة التي تلتقي فيها الأدوات الرقمية مع الفضول الإنساني. تصمم مساحات تعلم تمنح المتعلم الثقة كي يجرّب، ويخطئ، ويبني شيئاً يخصه.", "Heba works where digital tools meet human curiosity. She designs learning spaces that give people the confidence to experiment, fail safely, and build something of their own.")} />
             <div className="about-story reveal" style={{ animationDelay: "100ms" }}>
               <div className="about-portrait-wrap">
-                <img className="about-portrait" src="/assets/heba-portrait.jpg" alt="هبة محمود الطراونة" loading="lazy" />
+                <img className="about-portrait" src="/assets/heba-portrait-robotics.jpg" alt="هبة محمود الطراونة خلال تدريب عملي على الروبوتكس" loading="lazy" />
                 <div className="portrait-stamp"><span>HEBA</span><small>digital / human / impact</small></div>
               </div>
               <p>{isEnglish ? <>From training adults in digital skills and fabrication to sparking children’s interest in robotics and coding, her <strong>14+ years</strong> of experience make technology practical, clear, and close to everyday life.</> : <>من تدريب الكبار على المهارات الرقمية والتصنيع الرقمي، إلى إشعال شغف الأطفال بالروبوتات والبرمجة، تمتد خبرتها لأكثر من <strong>14 عاماً</strong> في جعل التقنية مفهومة، عملية، وقريبة من الحياة اليومية.</>}</p>
