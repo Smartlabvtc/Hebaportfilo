@@ -124,11 +124,11 @@ const galleryImagesEn = [
 ];
 
 const timelineEn = [
-  { period: "2024 — present", role: "Computer & Information Technology Trainer", place: "Vocational Training Corporation · Jordan", detail: "Advanced digital-skills and digital-fabrication programs for learners across age groups.", current: true },
-  { period: "2021 — present", role: "Children & Youth Coding and Robotics Trainer", place: "Zaha Cultural Center · Jordan", detail: "Interactive workshops combining coding, robotics, educational games, and AI.", },
-  { period: "2018 — present", role: "Digital Marketing Specialist", place: "Freelance · Multiple organizations", detail: "Platform management and content strategies that support reach and engagement.", },
-  { period: "2014 — 2018", role: "Technical & IT Support Officer", place: "Al-Oula Private Schools · Saudi Arabia", detail: "School lab infrastructure management and support for teaching teams.", },
-  { period: "2009 — 2012", role: "Computer Teacher", place: "Al-Nokhba Private Schools · Saudi Arabia", detail: "Computer education and technology-focused extracurricular activities.", },
+  { period: "2024 — present", role: "Computer & Information Technology Trainer", place: "Vocational Training Corporation · Jordan", detail: "Advanced digital-skills and digital-fabrication programs for learners across age groups.", image: "/assets/experience-vtc.jpg", imageAlt: "Digital skills and fabrication workshop", current: true },
+  { period: "2021 — present", role: "Children & Youth Coding and Robotics Trainer", place: "Zaha Cultural Center · Jordan", detail: "Interactive workshops combining coding, robotics, educational games, and AI.", image: "/assets/experience-robotics.jpg", imageAlt: "Youth robotics workshop", },
+  { period: "2018 — present", role: "Digital Marketing Specialist", place: "Freelance · Multiple organizations", detail: "Platform management and content strategies that support reach and engagement.", image: "/assets/experience-marketing.jpg", imageAlt: "Digital marketing planning workspace", },
+  { period: "2014 — 2018", role: "Technical & IT Support Officer", place: "Al-Oula Private Schools · Saudi Arabia", detail: "School lab infrastructure management and support for teaching teams.", image: "/assets/experience-it-support.jpg", imageAlt: "IT support in a school computer lab", },
+  { period: "2009 — 2012", role: "Computer Teacher", place: "Al-Nokhba Private Schools · Saudi Arabia", detail: "Computer education and technology-focused extracurricular activities.", image: "/assets/experience-computer-teacher.jpg", imageAlt: "Computer class with students", },
 ];
 
 const timeline = [
@@ -137,6 +137,7 @@ const timeline = [
     role: "مدربة حاسوب وتكنولوجيا معلومات",
     place: "مؤسسة التدريب المهني · الأردن",
     detail: "برامج متقدمة في المهارات الرقمية والتصنيع الرقمي لمختلف الفئات العمرية.",
+    image: "/assets/experience-vtc.jpg", imageAlt: "تدريب على المهارات الرقمية والتصنيع الرقمي",
     current: true,
   },
   {
@@ -144,24 +145,28 @@ const timeline = [
     role: "مدربة برمجة وروبوتات للأطفال والشباب",
     place: "مركز زها الثقافي · الأردن",
     detail: "ورش تفاعلية تجمع البرمجة والروبوتات والألعاب التعليمية والذكاء الاصطناعي.",
+    image: "/assets/experience-robotics.jpg", imageAlt: "ورشة برمجة وروبوتات للأطفال والشباب",
   },
   {
     period: "2018 — الآن",
     role: "أخصائية تسويق إلكتروني",
     place: "عمل حر · جهات ومشاريع متعددة",
     detail: "إدارة المنصات وبناء استراتيجيات المحتوى لزيادة الوصول والتفاعل.",
+    image: "/assets/experience-marketing.jpg", imageAlt: "تخطيط استراتيجية التسويق الرقمي",
   },
   {
     period: "2014 — 2018",
     role: "مسؤولة تقنية ودعم فني",
     place: "مدارس الأولى الأهلية · السعودية",
     detail: "إدارة البنية التقنية للمختبرات ودعم الفرق الإدارية والتدريسية.",
+    image: "/assets/experience-it-support.jpg", imageAlt: "دعم تقني داخل مختبر حاسوب",
   },
   {
     period: "2009 — 2012",
     role: "معلمة حاسوب",
     place: "مدارس النخبة الأهلية · السعودية",
     detail: "تدريس أساسيات الحاسوب وتطوير أنشطة تقنية ولاصفية للطلاب.",
+    image: "/assets/experience-computer-teacher.jpg", imageAlt: "درس حاسوب تفاعلي للطلاب",
   },
 ];
 
@@ -323,7 +328,7 @@ export default function App() {
         <section className="section experience-section" id="experience">
           <div className="container experience-grid">
             <div className="experience-sticky"><SectionHeading eyebrow={tx("04 · المسار المهني", "04 · Career path")} title={<>{isEnglish ? <>Experience that moves<br /><span>with the future.</span></> : <>خبرة تتحرك<br /><span>مع المستقبل.</span></>}</>} intro={tx("مسار مهني متدرج من تعليم الحاسوب إلى قيادة تجارب التعلم الرقمي والتصنيع الإبداعي.", "A career that grew from computer education into leading digital learning and creative fabrication experiences.")} /><div className="credential-card"><div className="credential-icon"><GraduationCap size={22} /></div><div><strong>{tx("بكالوريوس علوم الحاسوب", "Bachelor’s degree in Computer Science")}</strong><span>{tx("تفاصيل الجامعة وسنة التخرج تحتاج إلى استكمال", "University name and graduation year to be confirmed")}</span></div></div></div>
-            <div className="timeline" aria-label={tx("الخبرة المهنية", "Professional experience")}>{activeTimeline.map((item, index) => <article className={`timeline-item reveal ${item.current ? "is-current" : ""}`} style={{ animationDelay: `${index * 70}ms` }} key={item.role}><div className="timeline-marker"><span /></div><div className="timeline-content"><div className="timeline-meta"><span>{item.period}</span>{item.current && <b>{tx("الدور الحالي", "Current role")}</b>}</div><h3>{item.role}</h3><p className="timeline-place">{item.place}</p><p>{item.detail}</p></div></article>)}</div>
+            <div className="timeline" aria-label={tx("الخبرة المهنية", "Professional experience")}>{activeTimeline.map((item, index) => <article className={`timeline-item reveal ${item.current ? "is-current" : ""}`} style={{ animationDelay: `${index * 70}ms` }} key={item.role}><div className="timeline-marker"><span /></div><div className="timeline-content"><img className="timeline-image" src={item.image} alt={item.imageAlt} loading="lazy" /><div className="timeline-meta"><span>{item.period}</span>{item.current && <b>{tx("الدور الحالي", "Current role")}</b>}</div><h3>{item.role}</h3><p className="timeline-place">{item.place}</p><p>{item.detail}</p></div></article>)}</div>
           </div>
         </section>
 
