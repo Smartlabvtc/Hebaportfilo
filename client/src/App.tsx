@@ -48,6 +48,7 @@ const skills = [
 const projects = [
   {
     number: "01",
+    image: "/assets/work-01.jpg",
     eyebrow: "تدريب مهني · مؤسسة التدريب المهني",
     title: "من المعرفة الرقمية إلى الجاهزية المهنية",
     description:
@@ -59,6 +60,7 @@ const projects = [
   },
   {
     number: "02",
+    image: "/assets/work-07.jpg",
     eyebrow: "تعليم إبداعي · مركز زها الثقافي",
     title: "تعليم البرمجة كمساحة للخيال",
     description:
@@ -70,6 +72,7 @@ const projects = [
   },
   {
     number: "03",
+    image: "/assets/work-04.jpg",
     eyebrow: "بنية تقنية · مدارس الأولى الأهلية",
     title: "تقنية تعليمية تعمل بهدوء",
     description:
@@ -79,6 +82,17 @@ const projects = [
     tags: ["IT Support", "Systems", "Education Ops"],
     accent: "project-orange",
   },
+];
+
+const galleryImages = [
+  { src: "/assets/work-01.jpg", label: "مهارات رقمية", note: "learn / build" },
+  { src: "/assets/work-02.jpg", label: "تجارب تدريبية", note: "hands-on" },
+  { src: "/assets/work-03.jpg", label: "تصنيع رقمي", note: "make / test" },
+  { src: "/assets/work-04.jpg", label: "روبوتكس", note: "code / move" },
+  { src: "/assets/work-05.jpg", label: "تعلم إبداعي", note: "curiosity" },
+  { src: "/assets/work-07.jpg", label: "مشاريع المتعلمين", note: "share / grow" },
+  { src: "/assets/work-10.jpg", label: "تقنية للجميع", note: "open access" },
+  { src: "/assets/work-13.jpg", label: "مختبر المستقبل", note: "future lab" },
 ];
 
 const timeline = [
@@ -207,6 +221,10 @@ export default function App() {
           <div className="container about-grid">
             <SectionHeading eyebrow="01 · عن هبة" title={<>التقنية ليست هدفاً.<br /><span>بل فرصة للتغيير.</span></>} intro="تعمل هبة عند النقطة التي تلتقي فيها الأدوات الرقمية مع الفضول الإنساني. تصمم مساحات تعلم تمنح المتعلم الثقة كي يجرّب، ويخطئ، ويبني شيئاً يخصه." />
             <div className="about-story reveal" style={{ animationDelay: "100ms" }}>
+              <div className="about-portrait-wrap">
+                <img className="about-portrait" src="/assets/heba-portrait.jpg" alt="هبة محمود الطراونة" loading="lazy" />
+                <div className="portrait-stamp"><span>HEBA</span><small>digital / human / impact</small></div>
+              </div>
               <p>من تدريب الكبار على المهارات الرقمية والتصنيع الرقمي، إلى إشعال شغف الأطفال بالروبوتات والبرمجة، تمتد خبرتها لأكثر من <strong>14 عاماً</strong> في جعل التقنية مفهومة، عملية، وقريبة من الحياة اليومية.</p>
               <p>تجمع في عملها بين عقلية المدربة، وحسّ المصممة، وخبرة مسؤولة الدعم الفني. النتيجة: برامج واضحة، ورش تفاعلية، وبيئات تعليمية تعمل بثبات.</p>
               <div className="about-note"><BadgeCheck size={21} aria-hidden="true" /><span>معتمدة في تدريب المدربين للمهارات الرقمية والذكاء الاصطناعي.</span></div>
@@ -221,7 +239,7 @@ export default function App() {
               {projects.map((project, index) => (
                 <article className={`project-card ${project.accent} reveal`} style={{ animationDelay: `${index * 80}ms` }} key={project.number}>
                   <div className="card-topline"><span>{project.number}</span><ArrowUpRight size={18} aria-hidden="true" /></div>
-                  <div className="project-visual" aria-hidden="true"><div className="visual-symbol">{index === 0 ? <Sparkles size={31} /> : index === 1 ? <Bot size={31} /> : <MonitorCog size={31} />}</div><span className="visual-code">{index === 0 ? "010 / 101" : index === 1 ? "{ create() }" : "system.online"}</span></div>
+                  <div className="project-visual" aria-hidden="true"><img src={project.image} alt="" loading="lazy" /><div className="image-wash" /><div className="visual-symbol">{index === 0 ? <Sparkles size={31} /> : index === 1 ? <Bot size={31} /> : <MonitorCog size={31} />}</div><span className="visual-code">{index === 0 ? "010 / 101" : index === 1 ? "{ create() }" : "system.online"}</span></div>
                   <p className="card-eyebrow">{project.eyebrow}</p>
                   <h3>{project.title}</h3>
                   <p className="card-description">{project.description}</p>
@@ -249,6 +267,10 @@ export default function App() {
             <div className="skills-cloud reveal" style={{ animationDelay: "100ms" }}>{skills.map((skill) => { const Icon = skill.icon; return <div className={`skill-chip ${skill.tone}`} key={skill.label}><Icon size={18} aria-hidden="true" /><span>{skill.label}</span></div>; })}</div>
           </div>
           <div className="container tools-row"><div><span className="tools-label">أدوات يومية</span><p>Windows · Microsoft Office · Google Apps · Canva · Bambu Lab Studio · Beam Studio</p></div><div className="tools-badge"><Atom size={18} /> <span>تعلم مستمر</span></div></div>
+          <div className="container gallery-section reveal" style={{ animationDelay: "120ms" }}>
+            <div className="gallery-heading"><div><span className="tools-label">من حقيبة أعمالي</span><h3>لقطات من المختبر<br /><span>حيث تبدأ الفكرة.</span></h3></div><p>صور من تجارب التدريب، الروبوتكس، التصنيع الرقمي، ومشاريع المتعلمين.</p></div>
+            <div className="gallery-masonry">{galleryImages.map((image, index) => <figure className={`gallery-tile tile-${index + 1}`} key={image.src}><img src={image.src} alt={image.label} loading="lazy" /><figcaption><span>{image.label}</span><small>{image.note}</small></figcaption></figure>)}</div>
+          </div>
         </section>
 
         <section className="section experience-section" id="experience">
