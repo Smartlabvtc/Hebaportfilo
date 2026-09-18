@@ -47,7 +47,7 @@ const skills = [
 const projects = [
   {
     number: "01",
-    image: "/assets/work-01.jpg",
+    image: "assets/work-01.jpg",
     eyebrow: "تدريب مهني · مؤسسة التدريب المهني",
     title: "من المعرفة الرقمية إلى الجاهزية المهنية",
     description:
@@ -59,7 +59,7 @@ const projects = [
   },
   {
     number: "02",
-    image: "/assets/work-07.jpg",
+    image: "assets/work-07.jpg",
     eyebrow: "تعليم إبداعي · مركز زها الثقافي",
     title: "تعليم البرمجة كمساحة للخيال",
     description:
@@ -71,7 +71,7 @@ const projects = [
   },
   {
     number: "03",
-    image: "/assets/work-04.jpg",
+    image: "assets/work-04.jpg",
     eyebrow: "بنية تقنية · مدارس الأولى الأهلية",
     title: "تقنية تعليمية تعمل بهدوء",
     description:
@@ -84,20 +84,20 @@ const projects = [
 ];
 
 const galleryImages = [
-  { src: "/assets/work-01.jpg", label: "مهارات رقمية", note: "learn / build" },
-  { src: "/assets/work-02.jpg", label: "تجارب تدريبية", note: "hands-on" },
-  { src: "/assets/work-03.jpg", label: "تصنيع رقمي", note: "make / test" },
-  { src: "/assets/work-04.jpg", label: "روبوتكس", note: "code / move" },
-  { src: "/assets/work-05.jpg", label: "تعلم إبداعي", note: "curiosity" },
-  { src: "/assets/work-07.jpg", label: "مشاريع المتعلمين", note: "share / grow" },
-  { src: "/assets/work-10.jpg", label: "تقنية للجميع", note: "open access" },
-  { src: "/assets/work-13.jpg", label: "مختبر المستقبل", note: "future lab" },
+  { src: "assets/work-01.jpg", label: "مهارات رقمية", note: "learn / build" },
+  { src: "assets/work-02.jpg", label: "تجارب تدريبية", note: "hands-on" },
+  { src: "assets/work-03.jpg", label: "تصنيع رقمي", note: "make / test" },
+  { src: "assets/work-04.jpg", label: "روبوتكس", note: "code / move" },
+  { src: "assets/work-05.jpg", label: "تعلم إبداعي", note: "curiosity" },
+  { src: "assets/work-07.jpg", label: "مشاريع المتعلمين", note: "share / grow" },
+  { src: "assets/work-10.jpg", label: "تقنية للجميع", note: "open access" },
+  { src: "assets/work-13.jpg", label: "مختبر المستقبل", note: "future lab" },
 ];
 
 const projectsEn = [
-  { number: "01", image: "/assets/work-01.jpg", eyebrow: "Vocational training · VTC", title: "From digital knowledge to career readiness", description: "Hands-on digital skills and digital fabrication programs that connect learning to practice and give learners tools they can use in the workplace.", metric: "200+", metricLabel: "learners in one year", tags: ["Digital Skills", "3D Printing", "AI Literacy"], accent: "project-lime" },
-  { number: "02", image: "/assets/work-07.jpg", eyebrow: "Creative education · Zaha Cultural Center", title: "Teaching code as a space for imagination", description: "Interactive coding and robotics workshops for children and youth, using educational games and AI to turn curiosity into confident making.", metric: "150+", metricLabel: "children & youth", tags: ["Robotics", "Coding", "Creative Learning"], accent: "project-violet" },
-  { number: "03", image: "/assets/work-04.jpg", eyebrow: "Technical infrastructure · Al-Oula Schools", title: "Learning technology that works quietly", description: "Managing school labs, devices, systems, and technical support so teaching teams can deliver a stable learning experience every day.", metric: "4 years", metricLabel: "operational continuity", tags: ["IT Support", "Systems", "Education Ops"], accent: "project-orange" },
+  { number: "01", image: "assets/work-01.jpg", eyebrow: "Vocational training · VTC", title: "From digital knowledge to career readiness", description: "Hands-on digital skills and digital fabrication programs that connect learning to practice and give learners tools they can use in the workplace.", metric: "200+", metricLabel: "learners in one year", tags: ["Digital Skills", "3D Printing", "AI Literacy"], accent: "project-lime" },
+  { number: "02", image: "assets/work-07.jpg", eyebrow: "Creative education · Zaha Cultural Center", title: "Teaching code as a space for imagination", description: "Interactive coding and robotics workshops for children and youth, using educational games and AI to turn curiosity into confident making.", metric: "150+", metricLabel: "children & youth", tags: ["Robotics", "Coding", "Creative Learning"], accent: "project-violet" },
+  { number: "03", image: "assets/work-04.jpg", eyebrow: "Technical infrastructure · Al-Oula Schools", title: "Learning technology that works quietly", description: "Managing school labs, devices, systems, and technical support so teaching teams can deliver a stable learning experience every day.", metric: "4 years", metricLabel: "operational continuity", tags: ["IT Support", "Systems", "Education Ops"], accent: "project-orange" },
 ];
 
 const skillsEn = [
@@ -112,22 +112,22 @@ const skillsEn = [
 ];
 
 const galleryImagesEn = [
-  { src: "/assets/work-01.jpg", label: "Digital skills", note: "learn / build" },
-  { src: "/assets/work-02.jpg", label: "Training moments", note: "hands-on" },
-  { src: "/assets/work-03.jpg", label: "Digital fabrication", note: "make / test" },
-  { src: "/assets/work-04.jpg", label: "Robotics", note: "code / move" },
-  { src: "/assets/work-05.jpg", label: "Creative learning", note: "curiosity" },
-  { src: "/assets/work-07.jpg", label: "Learner projects", note: "share / grow" },
-  { src: "/assets/work-10.jpg", label: "Technology for all", note: "open access" },
-  { src: "/assets/work-13.jpg", label: "Future lab", note: "future lab" },
+  { src: "assets/work-01.jpg", label: "Digital skills", note: "learn / build" },
+  { src: "assets/work-02.jpg", label: "Training moments", note: "hands-on" },
+  { src: "assets/work-03.jpg", label: "Digital fabrication", note: "make / test" },
+  { src: "assets/work-04.jpg", label: "Robotics", note: "code / move" },
+  { src: "assets/work-05.jpg", label: "Creative learning", note: "curiosity" },
+  { src: "assets/work-07.jpg", label: "Learner projects", note: "share / grow" },
+  { src: "assets/work-10.jpg", label: "Technology for all", note: "open access" },
+  { src: "assets/work-13.jpg", label: "Future lab", note: "future lab" },
 ];
 
 const timelineEn = [
-  { period: "2024 — present", role: "Computer & Information Technology Trainer", place: "Vocational Training Corporation · Jordan", detail: "Advanced digital-skills and digital-fabrication programs for learners across age groups.", image: "/assets/experience-vtc.jpg", imageAlt: "Digital skills and fabrication workshop", current: true },
-  { period: "2021 — present", role: "Children & Youth Coding and Robotics Trainer", place: "Zaha Cultural Center · Jordan", detail: "Interactive workshops combining coding, robotics, educational games, and AI.", image: "/assets/experience-robotics.jpg", imageAlt: "Youth robotics workshop", },
-  { period: "2018 — present", role: "Digital Marketing Specialist", place: "Freelance · Multiple organizations", detail: "Platform management and content strategies that support reach and engagement.", image: "/assets/experience-marketing.jpg", imageAlt: "Digital marketing planning workspace", },
-  { period: "2014 — 2018", role: "Technical & IT Support Officer", place: "Al-Oula Private Schools · Saudi Arabia", detail: "School lab infrastructure management and support for teaching teams.", image: "/assets/experience-it-support.jpg", imageAlt: "IT support in a school computer lab", },
-  { period: "2009 — 2012", role: "Computer Teacher", place: "Al-Nokhba Private Schools · Saudi Arabia", detail: "Computer education and technology-focused extracurricular activities.", image: "/assets/experience-computer-teacher.jpg", imageAlt: "Computer class with students", },
+  { period: "2024 — present", role: "Computer & Information Technology Trainer", place: "Vocational Training Corporation · Jordan", detail: "Advanced digital-skills and digital-fabrication programs for learners across age groups.", image: "assets/experience-vtc.jpg", imageAlt: "Digital skills and fabrication workshop", current: true },
+  { period: "2021 — present", role: "Children & Youth Coding and Robotics Trainer", place: "Zaha Cultural Center · Jordan", detail: "Interactive workshops combining coding, robotics, educational games, and AI.", image: "assets/experience-robotics.jpg", imageAlt: "Youth robotics workshop", },
+  { period: "2018 — present", role: "Digital Marketing Specialist", place: "Freelance · Multiple organizations", detail: "Platform management and content strategies that support reach and engagement.", image: "assets/experience-marketing.jpg", imageAlt: "Digital marketing planning workspace", },
+  { period: "2014 — 2018", role: "Technical & IT Support Officer", place: "Al-Oula Private Schools · Saudi Arabia", detail: "School lab infrastructure management and support for teaching teams.", image: "assets/experience-it-support.jpg", imageAlt: "IT support in a school computer lab", },
+  { period: "2009 — 2012", role: "Computer Teacher", place: "Al-Nokhba Private Schools · Saudi Arabia", detail: "Computer education and technology-focused extracurricular activities.", image: "assets/experience-computer-teacher.jpg", imageAlt: "Computer class with students", },
 ];
 
 const timeline = [
@@ -136,7 +136,7 @@ const timeline = [
     role: "مدربة حاسوب وتكنولوجيا معلومات",
     place: "مؤسسة التدريب المهني · الأردن",
     detail: "برامج متقدمة في المهارات الرقمية والتصنيع الرقمي لمختلف الفئات العمرية.",
-    image: "/assets/experience-vtc.jpg", imageAlt: "تدريب على المهارات الرقمية والتصنيع الرقمي",
+    image: "assets/experience-vtc.jpg", imageAlt: "تدريب على المهارات الرقمية والتصنيع الرقمي",
     current: true,
   },
   {
@@ -144,28 +144,28 @@ const timeline = [
     role: "مدربة برمجة وروبوتات للأطفال والشباب",
     place: "مركز زها الثقافي · الأردن",
     detail: "ورش تفاعلية تجمع البرمجة والروبوتات والألعاب التعليمية والذكاء الاصطناعي.",
-    image: "/assets/experience-robotics.jpg", imageAlt: "ورشة برمجة وروبوتات للأطفال والشباب",
+    image: "assets/experience-robotics.jpg", imageAlt: "ورشة برمجة وروبوتات للأطفال والشباب",
   },
   {
     period: "2018 — الآن",
     role: "أخصائية تسويق إلكتروني",
     place: "عمل حر · جهات ومشاريع متعددة",
     detail: "إدارة المنصات وبناء استراتيجيات المحتوى لزيادة الوصول والتفاعل.",
-    image: "/assets/experience-marketing.jpg", imageAlt: "تخطيط استراتيجية التسويق الرقمي",
+    image: "assets/experience-marketing.jpg", imageAlt: "تخطيط استراتيجية التسويق الرقمي",
   },
   {
     period: "2014 — 2018",
     role: "مسؤولة تقنية ودعم فني",
     place: "مدارس الأولى الأهلية · السعودية",
     detail: "إدارة البنية التقنية للمختبرات ودعم الفرق الإدارية والتدريسية.",
-    image: "/assets/experience-it-support.jpg", imageAlt: "دعم تقني داخل مختبر حاسوب",
+    image: "assets/experience-it-support.jpg", imageAlt: "دعم تقني داخل مختبر حاسوب",
   },
   {
     period: "2009 — 2012",
     role: "معلمة حاسوب",
     place: "مدارس النخبة الأهلية · السعودية",
     detail: "تدريس أساسيات الحاسوب وتطوير أنشطة تقنية ولاصفية للطلاب.",
-    image: "/assets/experience-computer-teacher.jpg", imageAlt: "درس حاسوب تفاعلي للطلاب",
+    image: "assets/experience-computer-teacher.jpg", imageAlt: "درس حاسوب تفاعلي للطلاب",
   },
 ];
 
@@ -188,7 +188,7 @@ function OrbitalVisual({ isEnglish }: { isEnglish: boolean }) {
       <div className="orbit orbit-three" />
       <div className="orbital-core">
         <div className="core-glow" />
-        <img className="innovation-emblem" src="/assets/hero-innovation-emblem.png" alt="" aria-hidden="true" />
+        <img className="innovation-emblem" src="assets/hero-innovation-emblem.png" alt="" aria-hidden="true" />
         <span>{isEnglish ? <>Learn<br />to make impact</> : <>تعليم<br />يصنع أثراً</>}</span>
       </div>
       <span className="orbit-label label-one">AI</span>
@@ -273,7 +273,7 @@ export default function App() {
             <SectionHeading eyebrow={tx("01 · عن هبة", "01 · About Heba")} title={<>{isEnglish ? <>Technology is not the goal.<br /><span>It is an opportunity to change.</span></> : <>التقنية ليست هدفاً.<br /><span>بل فرصة للتغيير.</span></>}</>} intro={tx("تعمل هبة عند النقطة التي تلتقي فيها الأدوات الرقمية مع الفضول الإنساني. تصمم مساحات تعلم تمنح المتعلم الثقة كي يجرّب، ويخطئ، ويبني شيئاً يخصه.", "Heba works where digital tools meet human curiosity. She designs learning spaces that give people the confidence to experiment, fail safely, and build something of their own.")} />
             <div className="about-story reveal" style={{ animationDelay: "100ms" }}>
               <div className="about-portrait-wrap">
-                <img className="about-portrait" src="/assets/heba-portrait-robotics.jpg" alt="هبة محمود الطراونة خلال تدريب عملي على الروبوتكس" loading="lazy" />
+                <img className="about-portrait" src="assets/heba-portrait-robotics.jpg" alt="هبة محمود الطراونة خلال تدريب عملي على الروبوتكس" loading="lazy" />
                 <div className="portrait-stamp"><span>HEBA</span><small>digital / human / impact</small></div>
               </div>
               <p>{isEnglish ? <>From training adults in digital skills and fabrication to sparking children’s interest in robotics and coding, her <strong>14+ years</strong> of experience make technology practical, clear, and close to everyday life.</> : <>من تدريب الكبار على المهارات الرقمية والتصنيع الرقمي، إلى إشعال شغف الأطفال بالروبوتات والبرمجة، تمتد خبرتها لأكثر من <strong>14 عاماً</strong> في جعل التقنية مفهومة، عملية، وقريبة من الحياة اليومية.</>}</p>
@@ -305,9 +305,9 @@ export default function App() {
           <div className="container impact-grid">
             <div className="impact-intro reveal"><p className="eyebrow"><span className="eyebrow-dot" />{tx("الأرقام التي تحكي القصة", "The numbers behind the story")}</p><h2>{isEnglish ? <>Learning becomes stronger<br /><span>when it becomes tangible.</span></> : <>التعلم يصبح أقوى<br /><span>عندما يصبح ملموساً.</span></>}</h2><a className="text-link" href="#contact">{tx("ابدأ محادثة", "Start a conversation")} <ArrowLeft size={16} /></a></div>
             <div className="impact-stats">
-              <div className="impact-stat reveal"><img className="impact-icon" src="/assets/impact-icon-learning.png" alt="" aria-hidden="true" /><span className="stat-index">01</span><strong>200<span>+</span></strong><p>{tx("متدرب تم تأهيله خلال العام الماضي على مهارات رقمية متقدمة.", "learners developed advanced digital skills during the past year.")}</p></div>
-              <div className="impact-stat reveal" style={{ animationDelay: "100ms" }}><img className="impact-icon" src="/assets/impact-icon-robotics.png" alt="" aria-hidden="true" /><span className="stat-index">02</span><strong>150<span>+</span></strong><p>{tx("طفل وشاب خاضوا تجارب البرمجة والروبوتات بطريقة تفاعلية.", "children and young people experienced interactive coding and robotics.")}</p></div>
-              <div className="impact-stat reveal" style={{ animationDelay: "200ms" }}><img className="impact-icon" src="/assets/impact-icon-experience.png" alt="" aria-hidden="true" /><span className="stat-index">03</span><strong>14<span>y</span></strong><p>{tx("عاماً من الخبرة في التعليم التقني، الدعم الفني، والتسويق الرقمي.", "years across technical education, support, and digital marketing.")}</p></div>
+              <div className="impact-stat reveal"><img className="impact-icon" src="assets/impact-icon-learning.png" alt="" aria-hidden="true" /><span className="stat-index">01</span><strong>200<span>+</span></strong><p>{tx("متدرب تم تأهيله خلال العام الماضي على مهارات رقمية متقدمة.", "learners developed advanced digital skills during the past year.")}</p></div>
+              <div className="impact-stat reveal" style={{ animationDelay: "100ms" }}><img className="impact-icon" src="assets/impact-icon-robotics.png" alt="" aria-hidden="true" /><span className="stat-index">02</span><strong>150<span>+</span></strong><p>{tx("طفل وشاب خاضوا تجارب البرمجة والروبوتات بطريقة تفاعلية.", "children and young people experienced interactive coding and robotics.")}</p></div>
+              <div className="impact-stat reveal" style={{ animationDelay: "200ms" }}><img className="impact-icon" src="assets/impact-icon-experience.png" alt="" aria-hidden="true" /><span className="stat-index">03</span><strong>14<span>y</span></strong><p>{tx("عاماً من الخبرة في التعليم التقني، الدعم الفني، والتسويق الرقمي.", "years across technical education, support, and digital marketing.")}</p></div>
             </div>
           </div>
         </section>
@@ -317,7 +317,7 @@ export default function App() {
             <SectionHeading eyebrow={tx("03 · المهارات والخبرة", "03 · Skills & expertise")} title={<>{isEnglish ? <>A multi-dimensional<br /><span>toolkit.</span></> : <>صندوق أدوات<br /><span>متعدد الأبعاد.</span></>}</>} intro={tx("مزيج عملي من التفكير التقني، التواصل التعليمي، وصناعة المحتوى. لأن أفضل البرامج لا تحتاج أداة واحدة، بل منظومة متكاملة.", "A practical blend of technical thinking, educational communication, and content creation. The best programs need an ecosystem, not a single tool.")} />
             <div className="skills-cloud reveal" style={{ animationDelay: "100ms" }}>{activeSkills.map((skill) => { const Icon = skill.icon; return <div className={`skill-chip ${skill.tone}`} key={skill.label}><Icon size={18} aria-hidden="true" /><span>{skill.label}</span></div>; })}</div>
           </div>
-          <div className="container tools-row"><div className="tools-main"><span className="tools-label">{tx("أدوات يومية", "Everyday tools")}</span><div className="tool-list" aria-label={tx("البرامج المستخدمة يومياً", "Everyday software")}>{[{ name: "Windows", icon: "https://cdn.simpleicons.org/windows/0078D4" }, { name: "Microsoft Office", icon: "/assets/microsoft-office.svg" }, { name: "Google Apps", icon: "https://cdn.simpleicons.org/google/4285F4" }, { name: "Canva", icon: "https://cdn.simpleicons.org/canva/00C4CC" }, { name: "Bambu Studio", icon: "https://cdn.simpleicons.org/bambulab/00AE42" }, { name: "Beam Studio", icon: "/assets/beam-studio.svg" }].map(tool => <span className="tool-chip" key={tool.name}><img src={tool.icon} alt="" aria-hidden="true" loading="lazy" /><span>{tool.name}</span></span>)}</div></div><div className="tools-badge"><Atom size={18} /> <span>{tx("تعلم مستمر", "Continuous learning")}</span></div></div>
+          <div className="container tools-row"><div className="tools-main"><span className="tools-label">{tx("أدوات يومية", "Everyday tools")}</span><div className="tool-list" aria-label={tx("البرامج المستخدمة يومياً", "Everyday software")}>{[{ name: "Windows", icon: "https://cdn.simpleicons.org/windows/0078D4" }, { name: "Microsoft Office", icon: "assets/microsoft-office.svg" }, { name: "Google Apps", icon: "https://cdn.simpleicons.org/google/4285F4" }, { name: "Canva", icon: "https://cdn.simpleicons.org/canva/00C4CC" }, { name: "Bambu Studio", icon: "https://cdn.simpleicons.org/bambulab/00AE42" }, { name: "Beam Studio", icon: "assets/beam-studio.svg" }].map(tool => <span className="tool-chip" key={tool.name}><img src={tool.icon} alt="" aria-hidden="true" loading="lazy" /><span>{tool.name}</span></span>)}</div></div><div className="tools-badge"><Atom size={18} /> <span>{tx("تعلم مستمر", "Continuous learning")}</span></div></div>
           <div className="container gallery-section reveal" style={{ animationDelay: "120ms" }}>
             <div className="gallery-heading"><div><span className="tools-label">{tx("من حقيبة أعمالي", "From my work portfolio")}</span><h3>{isEnglish ? <>Snapshots from the lab<br /><span>where ideas begin.</span></> : <>لقطات من المختبر<br /><span>حيث تبدأ الفكرة.</span></>}</h3></div><p>{tx("صور من تجارب التدريب، الروبوتكس، التصنيع الرقمي، ومشاريع المتعلمين.", "A visual selection from training, robotics, digital fabrication, and learner projects.")}</p></div>
             <div className="gallery-masonry">{activeGalleryImages.map((image, index) => <figure className={`gallery-tile tile-${index + 1}`} key={image.src}><img src={image.src} alt={image.label} loading="lazy" /><figcaption><span>{image.label}</span><small>{image.note}</small></figcaption></figure>)}</div>
