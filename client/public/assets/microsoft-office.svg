@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Microsoft Office logo">
+  <rect width="64" height="64" rx="14" fill="#f25022"/>
+  <path d="M14 14h16v16H14z" fill="#f25022"/><path d="M34 14h16v16H34z" fill="#7fba00"/><path d="M14 34h16v16H14z" fill="#00a4ef"/><path d="M34 34h16v16H34z" fill="#ffb900"/>
+  <path d="M22 17 39 21v22l-17 4V17Z" fill="#fff" fill-opacity=".9"/><path d="m25 23 9 2v14l-9 2V23Z" fill="#f25022"/>
+</svg>
