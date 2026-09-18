@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -179,6 +179,46 @@ function SectionHeading({ eyebrow, title, intro }: { eyebrow: string; title: Rea
   );
 }
 
+function CountUp({ target, suffix }: { target: number; suffix: string }) {
+  const ref = useRef<HTMLElement>(null);
+  const [value, setValue] = useState(0);
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    let frame = 0;
+    let started = false;
+    const start = () => {
+      if (started) return;
+      started = true;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        setValue(target);
+        return;
+      }
+      const startedAt = performance.now();
+      const duration = 1300;
+      const animate = (now: number) => {
+        const progress = Math.min((now - startedAt) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setValue(Math.round(target * eased));
+        if (progress < 1) frame = requestAnimationFrame(animate);
+      };
+      frame = requestAnimationFrame(animate);
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        start();
+        observer.disconnect();
+      }
+    }, { threshold: 0.45 });
+    observer.observe(element);
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+    };
+  }, [target]);
+  return <strong ref={ref}>{value}<span>{suffix}</span></strong>;
+}
+
 function OrbitalVisual({ isEnglish }: { isEnglish: boolean }) {
   return (
     <div className="orbital-shell" aria-label="رسم تجريدي يرمز إلى تقاطع التعليم والتقنية والإبداع" role="img">
@@ -325,9 +365,9 @@ export default function App() {
           <div className="container impact-grid">
             <div className="impact-intro reveal"><p className="eyebrow"><span className="eyebrow-dot" />{tx("الأرقام التي تحكي القصة", "The numbers behind the story")}</p><h2>{isEnglish ? <>Learning becomes stronger<br /><span>when it becomes tangible.</span></> : <>التعلم يصبح أقوى<br /><span>عندما يصبح ملموساً.</span></>}</h2><a className="text-link" href="#contact">{tx("ابدأ محادثة", "Start a conversation")} <ArrowLeft size={16} /></a></div>
             <div className="impact-stats">
-              <div className="impact-stat reveal"><img className="impact-icon" src="assets/impact-icon-learning.png" alt="" aria-hidden="true" /><span className="stat-index">01</span><strong>200<span>+</span></strong><p>{tx("متدرب تم تأهيله خلال العام الماضي على مهارات رقمية متقدمة.", "learners developed advanced digital skills during the past year.")}</p></div>
-              <div className="impact-stat reveal" style={{ animationDelay: "100ms" }}><img className="impact-icon" src="assets/impact-icon-robotics.png" alt="" aria-hidden="true" /><span className="stat-index">02</span><strong>150<span>+</span></strong><p>{tx("طفل وشاب خاضوا تجارب البرمجة والروبوتات بطريقة تفاعلية.", "children and young people experienced interactive coding and robotics.")}</p></div>
-              <div className="impact-stat reveal" style={{ animationDelay: "200ms" }}><img className="impact-icon" src="assets/impact-icon-experience.png" alt="" aria-hidden="true" /><span className="stat-index">03</span><strong>14<span>y</span></strong><p>{tx("عاماً من الخبرة في التعليم التقني، الدعم الفني، والتسويق الرقمي.", "years across technical education, support, and digital marketing.")}</p></div>
+              <div className="impact-stat reveal"><img className="impact-icon" src="assets/impact-icon-learning.png" alt="" aria-hidden="true" /><span className="stat-index">01</span><CountUp target={200} suffix="+" /><p>{tx("متدرب تم تأهيله خلال العام الماضي على مهارات رقمية متقدمة.", "learners developed advanced digital skills during the past year.")}</p></div>
+              <div className="impact-stat reveal" style={{ animationDelay: "100ms" }}><img className="impact-icon" src="assets/impact-icon-robotics.png" alt="" aria-hidden="true" /><span className="stat-index">02</span><CountUp target={150} suffix="+" /><p>{tx("طفل وشاب خاضوا تجارب البرمجة والروبوتات بطريقة تفاعلية.", "children and young people experienced interactive coding and robotics.")}</p></div>
+              <div className="impact-stat reveal" style={{ animationDelay: "200ms" }}><img className="impact-icon" src="assets/impact-icon-experience.png" alt="" aria-hidden="true" /><span className="stat-index">03</span><CountUp target={14} suffix="y" /><p>{tx("عاماً من الخبرة في التعليم التقني، الدعم الفني، والتسويق الرقمي.", "years across technical education, support, and digital marketing.")}</p></div>
             </div>
           </div>
         </section>
