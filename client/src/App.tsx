@@ -8,7 +8,6 @@ import {
   ChevronDown,
   CircleCheck,
   Clock3,
-  Cpu,
   Download,
   GraduationCap,
   Layers3,
@@ -189,7 +188,7 @@ function OrbitalVisual({ isEnglish }: { isEnglish: boolean }) {
       <div className="orbit orbit-three" />
       <div className="orbital-core">
         <div className="core-glow" />
-        <Cpu size={38} strokeWidth={1.4} aria-hidden="true" />
+        <img className="innovation-emblem" src="/assets/hero-innovation-emblem.png" alt="" aria-hidden="true" />
         <span>{isEnglish ? <>Learn<br />to make impact</> : <>تعليم<br />يصنع أثراً</>}</span>
       </div>
       <span className="orbit-label label-one">AI</span>
