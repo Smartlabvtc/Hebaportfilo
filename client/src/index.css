@@ -55,6 +55,14 @@ button { font: inherit; }
 .main-nav a:hover { color: var(--ink); transform: translateY(-1px); }
 .main-nav .nav-cta { display: inline-flex; align-items: center; gap: 7px; padding: 10px 14px; border: 1px solid var(--ink); border-radius: 999px; color: var(--ink); }
 .menu-toggle { display: none; border: 0; background: transparent; color: var(--ink); padding: 8px; }
+.language-toggle { border: 1px solid var(--line); background: white; color: var(--violet); border-radius: 999px; min-width: 42px; height: 29px; padding: 0 9px; font: 10px "IBM Plex Mono", monospace; transition: background .18s var(--ease-out), color .18s var(--ease-out), transform .18s var(--ease-out); }
+.language-toggle:hover { background: var(--lime); color: var(--ink); transform: translateY(-1px); }
+.is-english .hero-copy, .is-english .section-heading, .is-english .about-story, .is-english .impact-intro, .is-english .skills-section, .is-english .experience-section, .is-english .principles-section, .is-english .contact-section { direction: ltr; }
+.is-english .hero-copy h1, .is-english .section-heading h2, .is-english .impact-intro h2, .is-english .principles-title h2, .is-english .contact-copy h2 { letter-spacing: -.06em; }
+.is-english .hero-kicker, .is-english .eyebrow { justify-content: flex-start; }
+.is-english .projects-section .section-heading, .is-english .gallery-heading, .is-english .tools-row, .is-english .footer-wrap { direction: ltr; }
+.is-english .card-eyebrow { text-align: left; }.is-english .tag-list { justify-content: start; }.is-english .project-bottom { align-items: end; }.is-english .timeline { padding-right: 0; padding-left: 30px; }.is-english .timeline::before { right: auto; left: 6px; }.is-english .timeline-marker { right: auto; left: -30px; }.is-english .timeline-meta { justify-content: flex-start; }.is-english .contact-direct { direction: ltr; }.is-english .contact-detail { direction: ltr; }
+
 
 .hero-section { position: relative; min-height: 740px; overflow: hidden; padding-top: 160px; background: var(--paper); }
 .hero-section::before { content: ""; position: absolute; width: 660px; height: 660px; left: -230px; top: 90px; background: radial-gradient(circle, rgba(200,243,74,.18), transparent 66%); pointer-events: none; }

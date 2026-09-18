@@ -95,6 +95,42 @@ const galleryImages = [
   { src: "/assets/work-13.jpg", label: "مختبر المستقبل", note: "future lab" },
 ];
 
+const projectsEn = [
+  { number: "01", image: "/assets/work-01.jpg", eyebrow: "Vocational training · VTC", title: "From digital knowledge to career readiness", description: "Hands-on digital skills and digital fabrication programs that connect learning to practice and give learners tools they can use in the workplace.", metric: "200+", metricLabel: "learners in one year", tags: ["Digital Skills", "3D Printing", "AI Literacy"], accent: "project-lime" },
+  { number: "02", image: "/assets/work-07.jpg", eyebrow: "Creative education · Zaha Cultural Center", title: "Teaching code as a space for imagination", description: "Interactive coding and robotics workshops for children and youth, using educational games and AI to turn curiosity into confident making.", metric: "150+", metricLabel: "children & youth", tags: ["Robotics", "Coding", "Creative Learning"], accent: "project-violet" },
+  { number: "03", image: "/assets/work-04.jpg", eyebrow: "Technical infrastructure · Al-Oula Schools", title: "Learning technology that works quietly", description: "Managing school labs, devices, systems, and technical support so teaching teams can deliver a stable learning experience every day.", metric: "4 years", metricLabel: "operational continuity", tags: ["IT Support", "Systems", "Education Ops"], accent: "project-orange" },
+];
+
+const skillsEn = [
+  { label: "Generative AI", icon: Sparkles, tone: "lime" },
+  { label: "Robotics & Coding", icon: Bot, tone: "violet" },
+  { label: "Digital Fabrication", icon: Wrench, tone: "orange" },
+  { label: "Training Design", icon: Layers3, tone: "blue" },
+  { label: "Classroom Facilitation", icon: GraduationCap, tone: "pink" },
+  { label: "Technical Support", icon: MonitorCog, tone: "teal" },
+  { label: "Digital Content", icon: Palette, tone: "yellow" },
+  { label: "Education Projects", icon: CircleCheck, tone: "green" },
+];
+
+const galleryImagesEn = [
+  { src: "/assets/work-01.jpg", label: "Digital skills", note: "learn / build" },
+  { src: "/assets/work-02.jpg", label: "Training moments", note: "hands-on" },
+  { src: "/assets/work-03.jpg", label: "Digital fabrication", note: "make / test" },
+  { src: "/assets/work-04.jpg", label: "Robotics", note: "code / move" },
+  { src: "/assets/work-05.jpg", label: "Creative learning", note: "curiosity" },
+  { src: "/assets/work-07.jpg", label: "Learner projects", note: "share / grow" },
+  { src: "/assets/work-10.jpg", label: "Technology for all", note: "open access" },
+  { src: "/assets/work-13.jpg", label: "Future lab", note: "future lab" },
+];
+
+const timelineEn = [
+  { period: "2024 — present", role: "Computer & Information Technology Trainer", place: "Vocational Training Corporation · Jordan", detail: "Advanced digital-skills and digital-fabrication programs for learners across age groups.", current: true },
+  { period: "2021 — present", role: "Children & Youth Coding and Robotics Trainer", place: "Zaha Cultural Center · Jordan", detail: "Interactive workshops combining coding, robotics, educational games, and AI.", },
+  { period: "2018 — present", role: "Digital Marketing Specialist", place: "Freelance · Multiple organizations", detail: "Platform management and content strategies that support reach and engagement.", },
+  { period: "2014 — 2018", role: "Technical & IT Support Officer", place: "Al-Oula Private Schools · Saudi Arabia", detail: "School lab infrastructure management and support for teaching teams.", },
+  { period: "2009 — 2012", role: "Computer Teacher", place: "Al-Nokhba Private Schools · Saudi Arabia", detail: "Computer education and technology-focused extracurricular activities.", },
+];
+
 const timeline = [
   {
     period: "2024 — الآن",
@@ -139,7 +175,7 @@ function SectionHeading({ eyebrow, title, intro }: { eyebrow: string; title: Rea
   );
 }
 
-function OrbitalVisual() {
+function OrbitalVisual({ isEnglish }: { isEnglish: boolean }) {
   return (
     <div className="orbital-shell" aria-label="رسم تجريدي يرمز إلى تقاطع التعليم والتقنية والإبداع" role="img">
       <div className="orbital-grid" />
@@ -149,7 +185,7 @@ function OrbitalVisual() {
       <div className="orbital-core">
         <div className="core-glow" />
         <Cpu size={38} strokeWidth={1.4} aria-hidden="true" />
-        <span>تعليم<br />يصنع أثراً</span>
+        <span>{isEnglish ? <>Learn<br />to make impact</> : <>تعليم<br />يصنع أثراً</>}</span>
       </div>
       <span className="orbit-label label-one">AI</span>
       <span className="orbit-label label-two">CODE</span>
@@ -163,22 +199,33 @@ function OrbitalVisual() {
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [lang, setLang] = useState<"ar" | "en">("ar");
+  const isEnglish = lang === "en";
+  const activeNavItems = isEnglish
+    ? [{ label: "About", href: "#about" }, { label: "Projects", href: "#projects" }, { label: "Experience", href: "#experience" }, { label: "Skills", href: "#skills" }]
+    : navItems;
+  const activeSkills = isEnglish ? skillsEn : skills;
+  const activeProjects = isEnglish ? projectsEn : projects;
+  const activeTimeline = isEnglish ? timelineEn : timeline;
+  const activeGalleryImages = isEnglish ? galleryImagesEn : galleryImages;
+  const tx = (ar: string, en: string) => isEnglish ? en : ar;
 
   const closeMenu = () => setMenuOpen(false);
   const printCv = () => window.print();
 
   return (
-    <div className="site-shell" dir="rtl">
+    <div className={`site-shell ${isEnglish ? "is-english" : ""}`} dir={isEnglish ? "ltr" : "rtl"}>
       <a className="skip-link" href="#main-content">تخطى إلى المحتوى الرئيسي</a>
       <header className="site-header">
         <div className="container nav-wrap">
           <a className="brand" href="#top" aria-label="العودة إلى بداية صفحة هبة الطراونة">
             <span className="brand-mark">هـ</span>
-            <span className="brand-copy"><strong>هبة الطراونة</strong><small>Digital Skills · Creative Tech</small></span>
+            <span className="brand-copy"><strong>{isEnglish ? "Heba Al-Tarawneh" : "هبة الطراونة"}</strong><small>Digital Skills · Creative Tech</small></span>
           </a>
           <nav className={`main-nav ${menuOpen ? "is-open" : ""}`} aria-label="التنقل الرئيسي">
-            {navItems.map((item) => <a key={item.href} href={item.href} onClick={closeMenu}>{item.label}</a>)}
-            <a className="nav-cta" href="#contact" onClick={closeMenu}>لنتحدث <ArrowUpRight size={15} aria-hidden="true" /></a>
+            {activeNavItems.map((item) => <a key={item.href} href={item.href} onClick={closeMenu}>{item.label}</a>)}
+            <a className="nav-cta" href="#contact" onClick={closeMenu}>{tx("لنتحدث", "Let’s talk")} <ArrowUpRight size={15} aria-hidden="true" /></a>
+            <button className="language-toggle" type="button" onClick={() => setLang(isEnglish ? "ar" : "en")} aria-label={tx("تغيير اللغة إلى الإنجليزية", "Switch language to Arabic")}>{isEnglish ? "عربي" : "EN"}</button>
           </nav>
           <button className="menu-toggle" type="button" aria-label={menuOpen ? "إغلاق القائمة" : "فتح القائمة"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -191,52 +238,52 @@ export default function App() {
           <div className="hero-noise" />
           <div className="container hero-grid">
             <div className="hero-copy reveal">
-              <div className="status-pill"><span className="status-dot" /> متاحة لفرص التدريب والشراكات التعليمية</div>
-              <p className="hero-kicker">مدربة مهارات رقمية · ميسّرة تعليم إبداعي</p>
-              <h1>أحوّل <em>التقنية</em><br />إلى قدرةٍ تُرى.</h1>
-              <p className="hero-lede">هبة محمود الطراونة مدربة تكنولوجيا معلومات تجمع بين الذكاء الاصطناعي، والبرمجة، والروبوتات، والتصنيع الرقمي لتصنع تجارب تعليمية عملية ومؤثرة.</p>
+              <div className="status-pill"><span className="status-dot" /> {tx("متاحة لفرص التدريب والشراكات التعليمية", "Available for training opportunities & educational partnerships")}</div>
+              <p className="hero-kicker">{tx("مدربة مهارات رقمية · ميسّرة تعليم إبداعي", "Digital skills trainer · Creative learning facilitator")}</p>
+              <h1>{isEnglish ? <>I turn <em>technology</em><br />into capability you can see.</> : <>أحوّل <em>التقنية</em><br />إلى قدرةٍ تُرى.</>}</h1>
+              <p className="hero-lede">{tx("هبة محمود الطراونة مدربة تكنولوجيا معلومات تجمع بين الذكاء الاصطناعي، والبرمجة، والروبوتات، والتصنيع الرقمي لتصنع تجارب تعليمية عملية ومؤثرة.", "Heba Mahmoud Al-Tarawneh is a technology trainer who brings together AI, coding, robotics, and digital fabrication to create practical, meaningful learning experiences.")}</p>
               <div className="hero-actions">
-                <a className="button button-primary" href="#projects">اكتشف المشاريع <ArrowLeft size={18} aria-hidden="true" /></a>
-                <button className="button button-ghost" type="button" onClick={printCv}><Printer size={17} aria-hidden="true" /> طباعة السيرة الذاتية</button>
+                <a className="button button-primary" href="#projects">{tx("اكتشف المشاريع", "Explore projects")} <ArrowLeft size={18} aria-hidden="true" /></a>
+                <button className="button button-ghost" type="button" onClick={printCv}><Printer size={17} aria-hidden="true" /> {tx("طباعة السيرة الذاتية", "Print CV")}</button>
               </div>
               <div className="hero-proof">
                 <div className="avatar-stack" aria-hidden="true"><span>هـ</span><span>AI</span><span>+</span></div>
-                <p><strong>14+ سنة</strong><br /><span>في التعليم والدعم التقني</span></p>
+                <p><strong>{tx("14+ سنة", "14+ years")}</strong><br /><span>{tx("في التعليم والدعم التقني", "in education & technical support")}</span></p>
               </div>
             </div>
             <div className="hero-visual reveal" style={{ animationDelay: "100ms" }}>
-              <div className="visual-caption caption-top"><Sparkles size={15} /> تقاطع التقنية مع الإنسان</div>
-              <OrbitalVisual />
-              <div className="visual-caption caption-bottom"><span className="mini-line" /> فكرة · مهارة · أثر</div>
+              <div className="visual-caption caption-top"><Sparkles size={15} /> {tx("تقاطع التقنية مع الإنسان", "Where technology meets people")}</div>
+              <OrbitalVisual isEnglish={isEnglish} />
+              <div className="visual-caption caption-bottom"><span className="mini-line" /> {tx("فكرة · مهارة · أثر", "Idea · skill · impact")}</div>
             </div>
           </div>
-          <div className="scroll-cue" aria-hidden="true"><span>مرّر للاستكشاف</span><ChevronDown size={16} /></div>
+          <div className="scroll-cue" aria-hidden="true"><span>{tx("مرّر للاستكشاف", "Scroll to explore")}</span><ChevronDown size={16} /></div>
         </section>
 
-        <section className="marquee-band" aria-label="مجالات العمل">
+        <section className="marquee-band" aria-label={tx("مجالات العمل", "Areas of work")}>
           <div className="marquee-track"><span>AI EDUCATION</span><b>✦</b><span>ROBOTICS</span><b>✦</b><span>DIGITAL FABRICATION</span><b>✦</b><span>CREATIVE TECHNOLOGY</span><b>✦</b><span>AI EDUCATION</span><b>✦</b><span>ROBOTICS</span><b>✦</b></div>
         </section>
 
         <section className="section about-section" id="about">
           <div className="container about-grid">
-            <SectionHeading eyebrow="01 · عن هبة" title={<>التقنية ليست هدفاً.<br /><span>بل فرصة للتغيير.</span></>} intro="تعمل هبة عند النقطة التي تلتقي فيها الأدوات الرقمية مع الفضول الإنساني. تصمم مساحات تعلم تمنح المتعلم الثقة كي يجرّب، ويخطئ، ويبني شيئاً يخصه." />
+            <SectionHeading eyebrow={tx("01 · عن هبة", "01 · About Heba")} title={<>{isEnglish ? <>Technology is not the goal.<br /><span>It is an opportunity to change.</span></> : <>التقنية ليست هدفاً.<br /><span>بل فرصة للتغيير.</span></>}</>} intro={tx("تعمل هبة عند النقطة التي تلتقي فيها الأدوات الرقمية مع الفضول الإنساني. تصمم مساحات تعلم تمنح المتعلم الثقة كي يجرّب، ويخطئ، ويبني شيئاً يخصه.", "Heba works where digital tools meet human curiosity. She designs learning spaces that give people the confidence to experiment, fail safely, and build something of their own.")} />
             <div className="about-story reveal" style={{ animationDelay: "100ms" }}>
               <div className="about-portrait-wrap">
                 <img className="about-portrait" src="/assets/heba-portrait.jpg" alt="هبة محمود الطراونة" loading="lazy" />
                 <div className="portrait-stamp"><span>HEBA</span><small>digital / human / impact</small></div>
               </div>
-              <p>من تدريب الكبار على المهارات الرقمية والتصنيع الرقمي، إلى إشعال شغف الأطفال بالروبوتات والبرمجة، تمتد خبرتها لأكثر من <strong>14 عاماً</strong> في جعل التقنية مفهومة، عملية، وقريبة من الحياة اليومية.</p>
-              <p>تجمع في عملها بين عقلية المدربة، وحسّ المصممة، وخبرة مسؤولة الدعم الفني. النتيجة: برامج واضحة، ورش تفاعلية، وبيئات تعليمية تعمل بثبات.</p>
-              <div className="about-note"><BadgeCheck size={21} aria-hidden="true" /><span>معتمدة في تدريب المدربين للمهارات الرقمية والذكاء الاصطناعي.</span></div>
+              <p>{isEnglish ? <>From training adults in digital skills and fabrication to sparking children’s interest in robotics and coding, her <strong>14+ years</strong> of experience make technology practical, clear, and close to everyday life.</> : <>من تدريب الكبار على المهارات الرقمية والتصنيع الرقمي، إلى إشعال شغف الأطفال بالروبوتات والبرمجة، تمتد خبرتها لأكثر من <strong>14 عاماً</strong> في جعل التقنية مفهومة، عملية، وقريبة من الحياة اليومية.</>}</p>
+              <p>{tx("تجمع في عملها بين عقلية المدربة، وحسّ المصممة، وخبرة مسؤولة الدعم الفني. النتيجة: برامج واضحة، ورش تفاعلية، وبيئات تعليمية تعمل بثبات.", "Her work combines a trainer’s mindset, a designer’s eye, and the experience of a technical support lead. The result: clear programs, interactive workshops, and learning environments that work reliably.")}</p>
+              <div className="about-note"><BadgeCheck size={21} aria-hidden="true" /><span>{tx("معتمدة في تدريب المدربين للمهارات الرقمية والذكاء الاصطناعي.", "Certified in Training of Trainers for digital skills and artificial intelligence.")}</span></div>
             </div>
           </div>
         </section>
 
         <section className="section projects-section" id="projects">
           <div className="container">
-            <SectionHeading eyebrow="02 · مشاريع مختارة" title={<>أثرٌ يبدأ من<br /><span>تجربة التعلم.</span></>} intro="ثلاثة مسارات تختصر طريقة العمل: فهم الاحتياج، بناء تجربة عملية، ثم قياس التقدم بلغة يفهمها المتعلم وسوق العمل." />
+            <SectionHeading eyebrow={tx("02 · مشاريع مختارة", "02 · Selected projects")} title={<>{isEnglish ? <>Impact begins with<br /><span>the learning experience.</span></> : <>أثرٌ يبدأ من<br /><span>تجربة التعلم.</span></>}</>} intro={tx("ثلاثة مسارات تختصر طريقة العمل: فهم الاحتياج، بناء تجربة عملية، ثم قياس التقدم بلغة يفهمها المتعلم وسوق العمل.", "Three paths capture the method: understand the need, build a practical experience, then measure progress in language learners and employers value.")} />
             <div className="projects-grid">
-              {projects.map((project, index) => (
+              {activeProjects.map((project, index) => (
                 <article className={`project-card ${project.accent} reveal`} style={{ animationDelay: `${index * 80}ms` }} key={project.number}>
                   <div className="card-topline"><span>{project.number}</span><ArrowUpRight size={18} aria-hidden="true" /></div>
                   <div className="project-visual" aria-hidden="true"><img src={project.image} alt="" loading="lazy" /><div className="image-wash" /><div className="visual-symbol">{index === 0 ? <Sparkles size={31} /> : index === 1 ? <Bot size={31} /> : <MonitorCog size={31} />}</div><span className="visual-code">{index === 0 ? "010 / 101" : index === 1 ? "{ create() }" : "system.online"}</span></div>
@@ -252,44 +299,44 @@ export default function App() {
 
         <section className="section impact-section">
           <div className="container impact-grid">
-            <div className="impact-intro reveal"><p className="eyebrow"><span className="eyebrow-dot" />الأرقام التي تحكي القصة</p><h2>التعلم يصبح أقوى<br /><span>عندما يصبح ملموساً.</span></h2><a className="text-link" href="#contact">ابدأ محادثة <ArrowLeft size={16} /></a></div>
+            <div className="impact-intro reveal"><p className="eyebrow"><span className="eyebrow-dot" />{tx("الأرقام التي تحكي القصة", "The numbers behind the story")}</p><h2>{isEnglish ? <>Learning becomes stronger<br /><span>when it becomes tangible.</span></> : <>التعلم يصبح أقوى<br /><span>عندما يصبح ملموساً.</span></>}</h2><a className="text-link" href="#contact">{tx("ابدأ محادثة", "Start a conversation")} <ArrowLeft size={16} /></a></div>
             <div className="impact-stats">
-              <div className="impact-stat reveal"><span className="stat-index">01</span><strong>200<span>+</span></strong><p>متدرب تم تأهيله خلال العام الماضي على مهارات رقمية متقدمة.</p></div>
-              <div className="impact-stat reveal" style={{ animationDelay: "100ms" }}><span className="stat-index">02</span><strong>150<span>+</span></strong><p>طفل وشاب خاضوا تجارب البرمجة والروبوتات بطريقة تفاعلية.</p></div>
-              <div className="impact-stat reveal" style={{ animationDelay: "200ms" }}><span className="stat-index">03</span><strong>14<span>y</span></strong><p>عاماً من الخبرة في التعليم التقني، الدعم الفني، والتسويق الرقمي.</p></div>
+              <div className="impact-stat reveal"><span className="stat-index">01</span><strong>200<span>+</span></strong><p>{tx("متدرب تم تأهيله خلال العام الماضي على مهارات رقمية متقدمة.", "learners developed advanced digital skills during the past year.")}</p></div>
+              <div className="impact-stat reveal" style={{ animationDelay: "100ms" }}><span className="stat-index">02</span><strong>150<span>+</span></strong><p>{tx("طفل وشاب خاضوا تجارب البرمجة والروبوتات بطريقة تفاعلية.", "children and young people experienced interactive coding and robotics.")}</p></div>
+              <div className="impact-stat reveal" style={{ animationDelay: "200ms" }}><span className="stat-index">03</span><strong>14<span>y</span></strong><p>{tx("عاماً من الخبرة في التعليم التقني، الدعم الفني، والتسويق الرقمي.", "years across technical education, support, and digital marketing.")}</p></div>
             </div>
           </div>
         </section>
 
         <section className="section skills-section" id="skills">
           <div className="container skills-grid">
-            <SectionHeading eyebrow="03 · المهارات والخبرة" title={<>صندوق أدوات<br /><span>متعدد الأبعاد.</span></>} intro="مزيج عملي من التفكير التقني، التواصل التعليمي، وصناعة المحتوى. لأن أفضل البرامج لا تحتاج أداة واحدة، بل منظومة متكاملة." />
-            <div className="skills-cloud reveal" style={{ animationDelay: "100ms" }}>{skills.map((skill) => { const Icon = skill.icon; return <div className={`skill-chip ${skill.tone}`} key={skill.label}><Icon size={18} aria-hidden="true" /><span>{skill.label}</span></div>; })}</div>
+            <SectionHeading eyebrow={tx("03 · المهارات والخبرة", "03 · Skills & expertise")} title={<>{isEnglish ? <>A multi-dimensional<br /><span>toolkit.</span></> : <>صندوق أدوات<br /><span>متعدد الأبعاد.</span></>}</>} intro={tx("مزيج عملي من التفكير التقني، التواصل التعليمي، وصناعة المحتوى. لأن أفضل البرامج لا تحتاج أداة واحدة، بل منظومة متكاملة.", "A practical blend of technical thinking, educational communication, and content creation. The best programs need an ecosystem, not a single tool.")} />
+            <div className="skills-cloud reveal" style={{ animationDelay: "100ms" }}>{activeSkills.map((skill) => { const Icon = skill.icon; return <div className={`skill-chip ${skill.tone}`} key={skill.label}><Icon size={18} aria-hidden="true" /><span>{skill.label}</span></div>; })}</div>
           </div>
-          <div className="container tools-row"><div><span className="tools-label">أدوات يومية</span><p>Windows · Microsoft Office · Google Apps · Canva · Bambu Lab Studio · Beam Studio</p></div><div className="tools-badge"><Atom size={18} /> <span>تعلم مستمر</span></div></div>
+          <div className="container tools-row"><div><span className="tools-label">{tx("أدوات يومية", "Everyday tools")}</span><p>Windows · Microsoft Office · Google Apps · Canva · Bambu Lab Studio · Beam Studio</p></div><div className="tools-badge"><Atom size={18} /> <span>{tx("تعلم مستمر", "Continuous learning")}</span></div></div>
           <div className="container gallery-section reveal" style={{ animationDelay: "120ms" }}>
-            <div className="gallery-heading"><div><span className="tools-label">من حقيبة أعمالي</span><h3>لقطات من المختبر<br /><span>حيث تبدأ الفكرة.</span></h3></div><p>صور من تجارب التدريب، الروبوتكس، التصنيع الرقمي، ومشاريع المتعلمين.</p></div>
-            <div className="gallery-masonry">{galleryImages.map((image, index) => <figure className={`gallery-tile tile-${index + 1}`} key={image.src}><img src={image.src} alt={image.label} loading="lazy" /><figcaption><span>{image.label}</span><small>{image.note}</small></figcaption></figure>)}</div>
+            <div className="gallery-heading"><div><span className="tools-label">{tx("من حقيبة أعمالي", "From my work portfolio")}</span><h3>{isEnglish ? <>Snapshots from the lab<br /><span>where ideas begin.</span></> : <>لقطات من المختبر<br /><span>حيث تبدأ الفكرة.</span></>}</h3></div><p>{tx("صور من تجارب التدريب، الروبوتكس، التصنيع الرقمي، ومشاريع المتعلمين.", "A visual selection from training, robotics, digital fabrication, and learner projects.")}</p></div>
+            <div className="gallery-masonry">{activeGalleryImages.map((image, index) => <figure className={`gallery-tile tile-${index + 1}`} key={image.src}><img src={image.src} alt={image.label} loading="lazy" /><figcaption><span>{image.label}</span><small>{image.note}</small></figcaption></figure>)}</div>
           </div>
         </section>
 
         <section className="section experience-section" id="experience">
           <div className="container experience-grid">
-            <div className="experience-sticky"><SectionHeading eyebrow="04 · المسار المهني" title={<>خبرة تتحرك<br /><span>مع المستقبل.</span></>} intro="مسار مهني متدرج من تعليم الحاسوب إلى قيادة تجارب التعلم الرقمي والتصنيع الإبداعي." /><div className="credential-card"><div className="credential-icon"><GraduationCap size={22} /></div><div><strong>بكالوريوس علوم الحاسوب</strong><span>تفاصيل الجامعة وسنة التخرج تحتاج إلى استكمال</span></div></div></div>
-            <div className="timeline" aria-label="الخبرة المهنية">{timeline.map((item, index) => <article className={`timeline-item reveal ${item.current ? "is-current" : ""}`} style={{ animationDelay: `${index * 70}ms` }} key={item.role}><div className="timeline-marker"><span /></div><div className="timeline-content"><div className="timeline-meta"><span>{item.period}</span>{item.current && <b>الدور الحالي</b>}</div><h3>{item.role}</h3><p className="timeline-place">{item.place}</p><p>{item.detail}</p></div></article>)}</div>
+            <div className="experience-sticky"><SectionHeading eyebrow={tx("04 · المسار المهني", "04 · Career path")} title={<>{isEnglish ? <>Experience that moves<br /><span>with the future.</span></> : <>خبرة تتحرك<br /><span>مع المستقبل.</span></>}</>} intro={tx("مسار مهني متدرج من تعليم الحاسوب إلى قيادة تجارب التعلم الرقمي والتصنيع الإبداعي.", "A career that grew from computer education into leading digital learning and creative fabrication experiences.")} /><div className="credential-card"><div className="credential-icon"><GraduationCap size={22} /></div><div><strong>{tx("بكالوريوس علوم الحاسوب", "Bachelor’s degree in Computer Science")}</strong><span>{tx("تفاصيل الجامعة وسنة التخرج تحتاج إلى استكمال", "University name and graduation year to be confirmed")}</span></div></div></div>
+            <div className="timeline" aria-label={tx("الخبرة المهنية", "Professional experience")}>{activeTimeline.map((item, index) => <article className={`timeline-item reveal ${item.current ? "is-current" : ""}`} style={{ animationDelay: `${index * 70}ms` }} key={item.role}><div className="timeline-marker"><span /></div><div className="timeline-content"><div className="timeline-meta"><span>{item.period}</span>{item.current && <b>{tx("الدور الحالي", "Current role")}</b>}</div><h3>{item.role}</h3><p className="timeline-place">{item.place}</p><p>{item.detail}</p></div></article>)}</div>
           </div>
         </section>
 
         <section className="section principles-section">
-          <div className="container principles-grid"><div className="principles-title"><p className="eyebrow"><span className="eyebrow-dot" />كيف تعمل</p><h2>ثلاثة مبادئ.<br /><span>أثرٌ واحد.</span></h2></div><div className="principle-card"><span>01</span><h3>وضوح قبل التعقيد</h3><p>أحوّل المفاهيم التقنية إلى خطوات قابلة للفهم والتطبيق، دون أن أفقد عمقها.</p></div><div className="principle-card"><span>02</span><h3>التجربة قبل المحاضرة</h3><p>يتعلم المشاركون من خلال البناء والتجريب والمشاركة، لا من خلال التلقي وحده.</p></div><div className="principle-card"><span>03</span><h3>الأثر قابل للقياس</h3><p>أربط كل برنامج بمخرجات واضحة تساعد المتعلم على رؤية تقدمه والاستفادة منه.</p></div></div>
+          <div className="container principles-grid"><div className="principles-title"><p className="eyebrow"><span className="eyebrow-dot" />{tx("كيف تعمل", "How I work")}</p><h2>{isEnglish ? <>Three principles.<br /><span>One shared impact.</span></> : <>ثلاثة مبادئ.<br /><span>أثرٌ واحد.</span></>}</h2></div><div className="principle-card"><span>01</span><h3>{tx("وضوح قبل التعقيد", "Clarity before complexity")}</h3><p>{tx("أحوّل المفاهيم التقنية إلى خطوات قابلة للفهم والتطبيق، دون أن أفقد عمقها.", "I turn technical concepts into steps people can understand and apply without losing their depth.")}</p></div><div className="principle-card"><span>02</span><h3>{tx("التجربة قبل المحاضرة", "Experience before lecture")}</h3><p>{tx("يتعلم المشاركون من خلال البناء والتجريب والمشاركة، لا من خلال التلقي وحده.", "Participants learn through building, testing, and sharing—not through passive reception alone.")}</p></div><div className="principle-card"><span>03</span><h3>{tx("الأثر قابل للقياس", "Impact can be measured")}</h3><p>{tx("أربط كل برنامج بمخرجات واضحة تساعد المتعلم على رؤية تقدمه والاستفادة منه.", "I connect every program to clear outcomes that help learners see and use their progress.")}</p></div></div>
         </section>
 
         <section className="section contact-section" id="contact">
-          <div className="container contact-card"><div className="contact-orb" /><div className="contact-copy reveal"><p className="eyebrow"><span className="eyebrow-dot" />05 · لنتحدث</p><h2>هل لديك فكرة تعليمية<br /><em>تستحق أن تُبنى؟</em></h2><p>إذا كنت تبحث عن مدربة تجمع بين المهارة التقنية والطاقة الإنسانية، يسعدني أن أسمع عن مشروعك.</p><div className="contact-actions"><a className="button button-light" href="mailto:Hebahtarawneh@gmail.com">أرسل بريداً <Mail size={17} /></a><a className="contact-direct" href="tel:+962797376526"><Phone size={16} /> 079 737 6526</a></div></div><div className="contact-side reveal" style={{ animationDelay: "100ms" }}><div className="contact-detail"><MapPin size={18} /><span>المزار الجنوبي<br />الكرك، الأردن</span></div><div className="contact-detail"><Clock3 size={18} /><span>متاحة للتعاون<br />والفرص التدريبية</span></div><div className="contact-signature">H / <span>make it meaningful</span></div></div></div>
+          <div className="container contact-card"><div className="contact-orb" /><div className="contact-copy reveal"><p className="eyebrow"><span className="eyebrow-dot" />{tx("05 · لنتحدث", "05 · Let’s talk")}</p><h2>{isEnglish ? <>Have an educational idea<br /><em>worth building?</em></> : <>هل لديك فكرة تعليمية<br /><em>تستحق أن تُبنى؟</em></>}</h2><p>{tx("إذا كنت تبحث عن مدربة تجمع بين المهارة التقنية والطاقة الإنسانية، يسعدني أن أسمع عن مشروعك.", "If you are looking for a trainer who combines technical skill with human energy, I would love to hear about your project.")}</p><div className="contact-actions"><a className="button button-light" href="mailto:Hebahtarawneh@gmail.com">{tx("أرسل بريداً", "Send an email")} <Mail size={17} /></a><a className="contact-direct" href="tel:+962797376526"><Phone size={16} /> 079 737 6526</a></div></div><div className="contact-side reveal" style={{ animationDelay: "100ms" }}><div className="contact-detail"><MapPin size={18} /><span>{isEnglish ? <>Al-Mazar Al-Janoubi<br />Karak, Jordan</> : <>المزار الجنوبي<br />الكرك، الأردن</>}</span></div><div className="contact-detail"><Clock3 size={18} /><span>{isEnglish ? <>Open to collaboration<br />and training opportunities</> : <>متاحة للتعاون<br />والفرص التدريبية</>}</span></div><div className="contact-signature">H / <span>make it meaningful</span></div></div></div>
         </section>
       </main>
 
-      <footer className="site-footer"><div className="container footer-wrap"><a className="brand" href="#top"><span className="brand-mark">هـ</span><span className="brand-copy"><strong>هبة الطراونة</strong><small>Digital Skills · Creative Tech</small></span></a><p>© 2026 هبة محمود الطراونة · صُمم ليكون واضحاً، عملياً، ومؤثراً.</p><div className="footer-actions"><a href="#top" aria-label="العودة إلى الأعلى"><ArrowUpRight size={18} /></a><a href="mailto:Hebahtarawneh@gmail.com" aria-label="إرسال بريد إلكتروني"><Send size={17} /></a></div></div></footer>
+      <footer className="site-footer"><div className="container footer-wrap"><a className="brand" href="#top"><span className="brand-mark">هـ</span><span className="brand-copy"><strong>{isEnglish ? "Heba Al-Tarawneh" : "هبة الطراونة"}</strong><small>Digital Skills · Creative Tech</small></span></a><p>{isEnglish ? "© 2026 Heba Mahmoud Al-Tarawneh · Designed to be clear, practical, and meaningful." : "© 2026 هبة محمود الطراونة · صُمم ليكون واضحاً، عملياً، ومؤثراً."}</p><div className="footer-actions"><a href="#top" aria-label="العودة إلى الأعلى"><ArrowUpRight size={18} /></a><a href="mailto:Hebahtarawneh@gmail.com" aria-label="إرسال بريد إلكتروني"><Send size={17} /></a></div></div></footer>
       <div className="print-only-cv"><h1>هبة محمود الطراونة</h1><p>مدربة مهارات رقمية وتقنيات إبداعية</p><hr /><h2>الملخص المهني</h2><p>مدربة خبيرة في تكنولوجيا المعلومات والمهارات الرقمية مع أكثر من 14 عاماً من الخبرة في التدريب التقني، الدعم الفني، والتصنيع الرقمي. متخصصة في الذكاء الاصطناعي، الروبوتات، البرمجة، والطباعة ثلاثية الأبعاد.</p><h2>الخبرة</h2>{timeline.map(item => <div key={item.role}><h3>{item.role} · {item.place}</h3><p>{item.period} — {item.detail}</p></div>)}<h2>التواصل</h2><p>Hebahtarawneh@gmail.com · 0797376526 · المزار الجنوبي، الكرك، الأردن</p></div>
     </div>
   );
